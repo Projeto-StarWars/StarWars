@@ -23,9 +23,9 @@ public class RebelService {
 
         repository.save(rebel);
 
-        RebelResponseDTO response = toResponseDTO(rebel);
+        RebelResponseDTO responseDTO = toResponseDTO(rebel);
 
-        return response;
+        return responseDTO;
     }
 
     public List<RebelResponseDTO> getAll(){
