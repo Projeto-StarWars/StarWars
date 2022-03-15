@@ -1,0 +1,16 @@
+
+<div class="d-flex flex-column p-1">
+    <div class="card">
+        <div class="d-flex flex-column p-1">
+            <span>{{ column }}</span>
+            <a (click)="createNewCard()"
+            class="btn btn-danger"
+            [ngClass]="column === 'ToDo' ? 'visible' : 'invisible'" >
+            New card
+            </a>
+        </div>
+    </div>
+    <app-card1 *ngFor= "let card of cards" [column]="column" [card]="card" (cardChanged) = "onCardChanged(card)">
+
+    </app-card1>
+</div>

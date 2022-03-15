@@ -1,0 +1,32 @@
+<div *ngIf="card.list == column" class="card card-flyer my-1" style="width: 20rem;">
+    <div class="card-body">
+
+        <input type="text"
+        placeholder="Title"
+        [(ngModel)]="title"
+        [readonly]="!editMode"/>
+
+        <a (click)="toggleEditMode()" *ngIf="!editMode" class="btn btn-danger">
+          Edit
+        </a>
+
+        <textarea [readonly]="!editMode"
+      [(ngModel)]="description" class="card-subtitle mb-2 text-muted" class="card-text">{{description}}</textarea>
+        <div *ngIf="!editMode">
+            <a class="btn btn-danger"(onClick)="deleteCard()"> Excluir </a>
+            <a [ngClass]="atFirstColumn ? 'invisible' : 'visible'" class="card-link" (click)="moveCardLeft()">Anterior</a>
+            <a [ngClass]="card.id == '' ? 'invisible' : 'visible'" [ngClass]="atLastColumn ? 'invisible' : 'visible'" class="card-link" (click)="moveCardRight()">Próximo</a>
+        </div>
+
+        <div    class="
+        card-footer
+        d-flex
+        justify-content-between
+        bg-secondary bg-opacity-75
+        p-1
+      " *ngIf="editMode">
+            <a  class="card-link" (click)="cancel()">Cancel</a>
+            <a  class="card-link" (click)="save()">Save</a>
+        </div>
+     </div>
+</div>
