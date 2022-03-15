@@ -1,6 +1,7 @@
 package br.com.starwars.services;
 
 import br.com.starwars.dto.RebelPacthRequestDTO;
+import br.com.starwars.dto.RebelReportDTO;
 import br.com.starwars.dto.RebelRequestDTO;
 import br.com.starwars.dto.RebelResponseDTO;
 import br.com.starwars.entity.RebelEntity;
@@ -49,6 +50,16 @@ public class RebelService {
         return response;
     }
 
+    public RebelResponseDTO report(Long id){
+
+        RebelEntity entity = repository.getById(id);
+        entity.setTraidor(true);
+
+        RebelResponseDTO response = toResponseDTO(entity);
+
+        return response;
+    }
+
     private RebelEntity toEntity(RebelRequestDTO dto){
         RebelEntity entity = new RebelEntity();
 
@@ -69,6 +80,7 @@ public class RebelService {
         response.setNomeBase(entity.getNomeBase());
         response.setUUIDid(entity.getUUIDid());
         response.setId(entity.getId());
+        response.setTraidor(entity.getTraidor());
 
         return response;
     }

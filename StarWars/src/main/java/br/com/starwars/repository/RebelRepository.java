@@ -1,5 +1,6 @@
 package br.com.starwars.repository;
 
+import br.com.starwars.entity.InventoryEnum;
 import br.com.starwars.entity.RebelEntity;
 import br.com.starwars.utils.GeneroEnum;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ import java.util.UUID;
 public class RebelRepository {
     private static List<RebelEntity> list = new ArrayList<>();
     private static Long sequence = 1L;
+    private static Boolean traidor = false;
 
     static {
         RebelEntity rebels = new RebelEntity();
@@ -24,6 +26,7 @@ public class RebelRepository {
         rebels.setNomeBase("Tatooine");
         rebels.setUUIDid(UUID.randomUUID().toString());
         rebels.setId(sequence++);
+        rebels.setTraidor(traidor);
         list.add(rebels);
 
 
@@ -37,12 +40,14 @@ public class RebelRepository {
         rebels2.setNomeBase("Coruscant");
         rebels2.setUUIDid(UUID.randomUUID().toString());
         rebels2.setId(sequence++);
+        rebels2.setTraidor(traidor);
         list.add(rebels2);
 
     }
 
     public RebelEntity save(RebelEntity rebel){
         rebel.setId(sequence++);
+        rebel.setTraidor(traidor);
         list.add(rebel);
         return rebel;
     }

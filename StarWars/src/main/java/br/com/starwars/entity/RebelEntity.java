@@ -4,8 +4,6 @@ import br.com.starwars.utils.GeneroEnum;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -20,6 +18,7 @@ public class RebelEntity {
     private String nomeBase; // EX: Tatooine
     private String UUIDid;
     private Long id;
+    private Boolean traidor;
 
     private List<InventoryEnum> inventario;
 

@@ -15,4 +15,5 @@ public class RebelResponseDTO {
     private String nomeBase;
     private String UUIDid;
     private Long id;
+    private Boolean traidor;
 }
