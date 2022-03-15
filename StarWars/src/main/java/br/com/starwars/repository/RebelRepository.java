@@ -12,6 +12,7 @@ import java.util.UUID;
 @Repository
 public class RebelRepository {
     private static List<RebelEntity> list = new ArrayList<>();
+    private static List<RebelEntity> listTraidores = new ArrayList<>();
     private static Long sequence = 1L;
     private static Boolean traidor = false;
 
@@ -73,5 +74,16 @@ public class RebelRepository {
             }
         }
     }
+
+    public List<RebelEntity> sortTraidores(){
+        for (int i = 0; i < list.size(); i++){
+            if (list.get(i).getTraidor() == true){
+                listTraidores.add(list.get(i));
+            }
+        }
+        return listTraidores;
+    }
+
+
 
 }

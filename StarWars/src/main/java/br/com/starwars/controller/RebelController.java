@@ -1,11 +1,9 @@
 package br.com.starwars.controller;
 
 import br.com.starwars.dto.RebelPacthRequestDTO;
-import br.com.starwars.dto.RebelReportDTO;
 import br.com.starwars.dto.RebelRequestDTO;
 import br.com.starwars.dto.RebelResponseDTO;
-import br.com.starwars.entity.RebelEntity;
-import br.com.starwars.repository.RebelRepository;
+import br.com.starwars.dto.RelatorioDTO;
 import br.com.starwars.services.RebelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -38,6 +36,15 @@ public class RebelController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(rebels);
+    }
+
+    @GetMapping("/relatorios")
+    public ResponseEntity<RelatorioDTO> getRelatorio(){
+        RelatorioDTO relatorio = service.getRelatorio();
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(relatorio);
     }
 
     @PatchMapping("{id}")

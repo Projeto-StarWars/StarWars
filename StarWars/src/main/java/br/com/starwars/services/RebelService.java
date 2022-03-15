@@ -1,9 +1,6 @@
 package br.com.starwars.services;
 
-import br.com.starwars.dto.RebelPacthRequestDTO;
-import br.com.starwars.dto.RebelReportDTO;
-import br.com.starwars.dto.RebelRequestDTO;
-import br.com.starwars.dto.RebelResponseDTO;
+import br.com.starwars.dto.*;
 import br.com.starwars.entity.RebelEntity;
 import br.com.starwars.repository.RebelRepository;
 import lombok.RequiredArgsConstructor;
@@ -54,10 +51,39 @@ public class RebelService {
 
         RebelEntity entity = repository.getById(id);
         entity.setTraidor(true);
-
         RebelResponseDTO response = toResponseDTO(entity);
 
         return response;
+
+    }
+
+    public RelatorioDTO getRelatorio(){
+
+        List<RebelEntity> rebeldes = repository.getAll(); //2
+        List<RebelEntity> traidores = repository.sortTraidores(); //1
+
+
+        double rebeldesSize = rebeldes.size();
+        double  traidoresSize = traidores.size();
+        double porcentagemTraidores = 0;
+        double porcentagemRebeldes = 0;
+
+        if (traidoresSize != 0 && rebeldesSize != 0 && rebeldesSize != traidoresSize){
+            porcentagemTraidores = (traidoresSize/rebeldesSize)*100; // (1/2)x100 = 50
+            porcentagemRebeldes = 100-porcentagemTraidores; // 100-50
+        }else if(traidoresSize == 0){
+            porcentagemTraidores = 0;
+            porcentagemRebeldes = 100;
+        }else if(rebeldesSize == traidoresSize){
+            porcentagemTraidores = 100;
+            porcentagemRebeldes = 0;
+        }
+
+        RelatorioDTO relatorio = new RelatorioDTO();
+        relatorio.setPorcentagemTraidores(porcentagemTraidores);
+        relatorio.setPorcentagemRebeldes(porcentagemRebeldes);
+
+        return relatorio;
     }
 
     private RebelEntity toEntity(RebelRequestDTO dto){
