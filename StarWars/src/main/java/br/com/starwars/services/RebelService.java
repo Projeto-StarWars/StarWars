@@ -1,5 +1,6 @@
 package br.com.starwars.services;
 
+import br.com.starwars.dto.RebelPacthRequestDTO;
 import br.com.starwars.dto.RebelRequestDTO;
 import br.com.starwars.dto.RebelResponseDTO;
 import br.com.starwars.entity.RebelEntity;
@@ -19,7 +20,7 @@ public class RebelService {
 
     public RebelResponseDTO add(RebelRequestDTO request){
         RebelEntity rebel = toEntity(request);
-        rebel.setId(UUID.randomUUID().toString());
+        rebel.setUUIDid(UUID.randomUUID().toString());
 
         repository.save(rebel);
 
@@ -34,6 +35,18 @@ public class RebelService {
         return rebels.stream()
                 .map(entity -> toResponseDTO(entity))
                 .collect(Collectors.toList());
+    }
+
+    public RebelResponseDTO update(Long id, RebelPacthRequestDTO requestPatch){
+
+        RebelEntity entity = repository.getById(id);
+        entity.setLongitude(requestPatch.getLongitude());
+        entity.setLatitude(requestPatch.getLatitude());
+        entity.setNomeBase(requestPatch.getNomeBase());
+
+        RebelResponseDTO response = toResponseDTO(entity);
+
+        return response;
     }
 
     private RebelEntity toEntity(RebelRequestDTO dto){
@@ -54,6 +67,7 @@ public class RebelService {
         response.setLatitude(entity.getLatitude());
         response.setLongitude(entity.getLongitude());
         response.setNomeBase(entity.getNomeBase());
+        response.setUUIDid(entity.getUUIDid());
         response.setId(entity.getId());
 
         return response;

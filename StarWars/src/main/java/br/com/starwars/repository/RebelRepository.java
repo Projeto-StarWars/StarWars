@@ -11,6 +11,7 @@ import java.util.UUID;
 @Repository
 public class RebelRepository {
     private static List<RebelEntity> list = new ArrayList<>();
+    private static Long sequence = 1L;
 
     static {
         RebelEntity rebels = new RebelEntity();
@@ -21,7 +22,8 @@ public class RebelRepository {
         rebels.setLatitude(1.348756);
         rebels.setLongitude(7.4678235);
         rebels.setNomeBase("Tatooine");
-        rebels.setId(UUID.randomUUID().toString());
+        rebels.setUUIDid(UUID.randomUUID().toString());
+        rebels.setId(sequence++);
         list.add(rebels);
 
 
@@ -33,18 +35,38 @@ public class RebelRepository {
         rebels2.setLatitude(5.4344756);
         rebels2.setLongitude(62.7364);
         rebels2.setNomeBase("Coruscant");
-        rebels2.setId(UUID.randomUUID().toString());
+        rebels2.setUUIDid(UUID.randomUUID().toString());
+        rebels2.setId(sequence++);
         list.add(rebels2);
 
     }
 
     public RebelEntity save(RebelEntity rebel){
+        rebel.setId(sequence++);
         list.add(rebel);
         return rebel;
     }
 
     public List<RebelEntity> getAll(){
         return list;
+    }
+
+    public RebelEntity getById(Long id) {
+        return list.stream()
+                .filter(entity -> entity.getId().equals(id))
+                .findFirst()
+                .get();
+    }
+
+    public void update(RebelEntity entity){
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId().equals(entity.getId())) {
+                list.get(i).setLatitude(entity.getLatitude());
+                list.get(i).setLongitude(entity.getLongitude());
+                list.get(i).setNomeBase(entity.getNomeBase());
+                return;
+            }
+        }
     }
 
 }

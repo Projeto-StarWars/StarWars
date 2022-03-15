@@ -1,5 +1,6 @@
 package br.com.starwars.controller;
 
+import br.com.starwars.dto.RebelPacthRequestDTO;
 import br.com.starwars.dto.RebelRequestDTO;
 import br.com.starwars.dto.RebelResponseDTO;
 import br.com.starwars.entity.RebelEntity;
@@ -31,14 +32,21 @@ public class RebelController {
     @GetMapping
     public ResponseEntity<List<RebelResponseDTO>> getAll(){
 
-        //List<RebelEntity> rebeldes = service.getAll();
-
-        //return ResponseEntity.ok(rebeldes);
-
         List<RebelResponseDTO> rebels = service.getAll();
 
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(rebels);
+    }
+
+    @PatchMapping("{id}")
+    public ResponseEntity<RebelResponseDTO> patchLocation(@PathVariable Long id,
+                                                          @RequestBody RebelPacthRequestDTO request){
+
+        RebelResponseDTO response = service.update(id, request);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(response);
     }
 }

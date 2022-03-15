@@ -13,5 +13,6 @@ public class RebelResponseDTO {
     private Double latitude;
     private Double longitude;
     private String nomeBase;
-    private String id;
+    private String UUIDid;
+    private Long id;
 }
