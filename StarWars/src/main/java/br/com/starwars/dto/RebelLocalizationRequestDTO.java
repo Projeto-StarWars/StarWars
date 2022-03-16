@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RebelPacthRequestDTO {
+public class RebelLocalizationRequestDTO {
 
     private Double latitude;
     private Double longitude;

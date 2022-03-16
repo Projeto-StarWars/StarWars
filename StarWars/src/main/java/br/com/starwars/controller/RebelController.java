@@ -1,6 +1,6 @@
 package br.com.starwars.controller;
 
-import br.com.starwars.dto.RebelPacthRequestDTO;
+import br.com.starwars.dto.RebelLocalizationRequestDTO;
 import br.com.starwars.dto.RebelRequestDTO;
 import br.com.starwars.dto.RebelResponseDTO;
 import br.com.starwars.dto.RelatorioDTO;
@@ -49,7 +49,7 @@ public class RebelController {
 
     @PatchMapping("{id}")
     public ResponseEntity<RebelResponseDTO> patchLocation(@PathVariable Long id,
-                                                          @RequestBody RebelPacthRequestDTO request){
+                                                          @RequestBody RebelLocalizationRequestDTO request){
 
         RebelResponseDTO response = service.update(id, request);
 
