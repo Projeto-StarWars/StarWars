@@ -9,9 +9,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
+
 public class RebelEntity {
     //nome, idade, gênero, localização (latitude, longitude e nome, na galáxia, da base ao qual faz parte)
+    private Long id;
     private String nome;
     private Integer idade;
     private GeneroEnum genero;
@@ -19,7 +20,6 @@ public class RebelEntity {
     private Double longitude; // EX: 5.72365635
     private String nomeBase; // EX: Tatooine
     private String UUIDid;
-    private Long id;
     private Boolean traidor;
 
     private List<InventoryEnum> inventario;
