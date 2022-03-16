@@ -18,5 +18,5 @@ public class LocalizationEntity {
     private long id;
     private Double latitude; // EX: 1.3248756
     private Double longitude; // EX: 5.72365635
-    private String nomeBase; // EX: Tatooine
+    private String nomeDaBase; // EX: Tatooine
 }

@@ -24,7 +24,7 @@ public class RebelEntity {
     @OneToOne
     private LocalizationEntity localizationEntity;
 
-    private List<InventoryEnum> inventario;
+    //private List<InventoryEnum> inventario;
 
     private Integer reportCount = 0;
 

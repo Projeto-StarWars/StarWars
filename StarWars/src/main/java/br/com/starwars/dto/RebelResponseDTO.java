@@ -10,10 +10,7 @@ public class RebelResponseDTO {
     private String nome;
     private Integer idade;
     private GeneroEnum genero;
-    private Double latitude;
-    private Double longitude;
-    private String nomeBase;
-    private String UUIDid;
+    private RebelLocalizationResponseDTO localizacao;
     private Long id;
     private Boolean traidor;
 }

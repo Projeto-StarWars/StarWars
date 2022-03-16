@@ -10,4 +10,7 @@ public class RebelRequestDTO {
     private String nome;
     private Integer idade;
     private GeneroEnum genero;
+    private RebelLocalizationRequestDTO localization;
+    private Boolean traidor = false;
+    private Integer reportCount = 0;
 }
