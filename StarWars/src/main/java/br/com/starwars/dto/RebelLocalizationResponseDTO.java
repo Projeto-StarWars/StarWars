@@ -5,10 +5,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RebelPacthRequestDTO {
+public class RebelLocalizationResponseDTO {
 
     private Double latitude;
     private Double longitude;
-    private String nomeBase;
+    private String nomeDaBase;
 
 }
