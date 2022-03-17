@@ -58,10 +58,11 @@ public class RebelController {
                 .body(response);
     }
 
-    @PatchMapping("/reportar/{id}")
+    @GetMapping("/reportar/{id}")
     public ResponseEntity<RebelResponseDTO> reportRebel(@PathVariable Long id){
 
         RebelResponseDTO response = service.report(id);
+
 
         return ResponseEntity
                 .status(HttpStatus.OK)

@@ -21,10 +21,13 @@ public class RebelEntity {
     private Integer idade;
     private GeneroEnum genero;
     private Boolean traidor;
+
     @OneToOne
     private LocalizationEntity localizationEntity;
 
-    //private List<InventoryEnum> inventario;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<InventoryEntity> inventario;
 
     private Integer reportCount = 0;
 

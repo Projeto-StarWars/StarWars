@@ -8,4 +8,9 @@ import lombok.Setter;
 public class RelatorioDTO {
     private double porcentagemTraidores;
     private double porcentagemRebeldes;
+    private double mediaArmas;
+    private double mediaMunicao;
+    private double mediaComidas;
+    private double mediaAgua;
+    private double pontosPerdidosTraidores;
 }
