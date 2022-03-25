@@ -3,6 +3,7 @@ package br.com.starwars.repository;
 import br.com.starwars.entity.InventoryEnum;
 import br.com.starwars.entity.RebelEntity;
 import br.com.starwars.utils.GeneroEnum;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,8 +11,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public class RebelRepository {
-    private static List<RebelEntity> list = new ArrayList<>();
+public interface RebelRepository extends JpaRepository<RebelEntity,Long> {
+  /*  private static List<RebelEntity> list = new ArrayList<>();
     private static List<RebelEntity> listTraidores = new ArrayList<>();
     private static Long sequence = 1L;
     private static Boolean traidor = false;
@@ -83,7 +84,7 @@ public class RebelRepository {
         }
         return listTraidores;
     }
-
+*/
 
 
 }
